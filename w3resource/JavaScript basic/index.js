@@ -104,7 +104,6 @@ function splitReverseJoin2(strArr) {
 let strArr = ['Javascript', 'Functions', 'W3resource', 'Arrays'];
 splitReverseJoin2(strArr); */
 
-
 /*
 ###############################################################
 2. Write a JavaScript program to determine whether a given year is a
@@ -190,6 +189,93 @@ while(Number(num) !== random) {
     num = prompt("Guess the number: ");
 }
 console.log("Good Work"); */
+
+/*
+###############################################################
+ 4. Write a JavaScript program to convert temperatures to and from Celsius, Fahrenheit
+###############################################################
+*/
+
+// 1
+/*
+let fahrenheit = 140;
+let celsius = (5 / 9) * (fahrenheit - 32);
+console.log(`Fahrenheit: ${fahrenheit}
+Celsius: ${celsius}`);
+
+celsius = 32;
+fahrenheit = (celsius * 9 / 5 + 32);
+console.log(`Fahrenheit: ${fahrenheit}
+Celsius: ${celsius}`); */
+
+// 2 - Function Expression
+/*
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9 / 5 + 32);
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit - 32);
+}
+
+let celsius = 40;
+console.log("Celsius: " + celsius + " Fahrenheit: " + celsiusToFahrenheit(celsius));
+
+let fahrenheit = 120;
+console.log("Fahrenheit: " + fahrenheit + " Celsius: " + fahrenheitToCelsius(fahrenheit)); */
+
+// 3 - Arrow Function
+/*
+const celsiusToFahrenheit = (celsius) => {
+    return (celsius * 9 / 5 + 32);
+}
+
+const fahrenheitToCelsius = (fahrenheit) => {
+    return (5/9) * (fahrenheit - 32);
+}
+
+const fahrenheit = celsiusToFahrenheit(50);
+console.log(`Fahrenheit: ${fahrenheit}`);
+
+const celsius = fahrenheitToCelsius(150);
+console.log(`Celsius: ${celsius}`); */
+
+// 4 - Anonymous function
+/*
+const fahrenheit = function(celsius) {
+    return (celsius * 9 / 5 + 32);
+}
+
+const celsius = function fahrenheitToCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit - 32);
+}
+
+const fahrenheit2 = fahrenheit(32);
+const celsius2 = celsius(140);
+console.log(`Celsius: ${celsius2}
+Fahrenheit: ${fahrenheit2}`); */
+
+// 5 - Array
+/*
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9 / 5 + 32);
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (5/9) * (fahrenheit - 32);
+}
+
+const celsiusArray = [20, 25, 28, 32, 40];
+const fahrenheitArray = [80, 95, 112, 120, 145];
+
+for(let i = 0; i < celsiusArray.length; i++) {
+    console.log(`Fahrenheit: ${celsiusArray[i]}\n`);
+    console.log(`Celsius: ${fahrenheitArray[i]}\n`);
+} */
+
+
+
+
 
 
 
