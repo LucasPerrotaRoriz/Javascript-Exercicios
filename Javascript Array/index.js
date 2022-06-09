@@ -8,13 +8,30 @@ https://www.jschallenger.com/javascript-arrays
 1
 // Write a function that takes an array (a) and a value (n) as argument
 // Return the nth element of 'a'
+
+function nthElement(array, idx) {
+   let element = array[idx];
+   console.log(element);
+}
+
+let array = [1,2,3,4,5];
+nthElement(array, 2);
 */
 
 /*
 2
 // Write a function that takes an array (a) as argument
-// Extract the last 3 elements of a
-// Return the resulting array
+// Remove the first 3 elements of 'a'
+// Return the result
+
+function firstThreeElements(array) {
+   for(let i = 0; i < 3; i++) {
+      console.log(array[i]);
+   }
+}
+
+let array = [12,5,7,91,57,58,34,22];
+firstThreeElements(array);
 */
 
 /*
@@ -22,19 +39,57 @@ https://www.jschallenger.com/javascript-arrays
 // Write a function that takes an array (a) as argument
 // Extract the last 3 elements of a
 // Return the resulting array
+
+function lastThreeElements() {
+   for(let i = array.length - 3; i <= array.length; i++) {
+      console.log(array[i]);
+   }
+}
+
+let array = [12,5,7,91,57,58,34,22];
+lastThreeElements(array);
 */
 
 /*
 4
 // Write a function that takes an array (a) as argument
-// Extract the first 3 elements of a
+// Extract the first n elements of a
 // Return the resulting array
+
+function firstNElements(array, idx) {
+   for(let i = 0; i < idx; i++) {
+      console.log(array[i]);
+   }
+}
+
+let array = [12,5,7,91,57,58,34,22];
+let idx = prompt("Show how many elements: ");
+if(idx > array.length) {
+   window.alert("Index bigger than array");
+} else {
+   firstNElements(array, idx);
+}
+
 */
 
 /*
 5
 // Write a function that takes an array (a) and a number (n) as arguments
 // It should return the last n elements of a
+
+function lastNElements(array, idx) {
+   for(let i = array.length - idx; i <= array.length; i++) {
+      console.log(array[i]);
+   }
+}
+
+let array = [12,5,7,91,57,58,34,22];
+let idx = prompt("Show how many elements: ");
+if(idx > array.length) {
+   window.alert("Index bigger than array");
+} else {
+   lastNElements(array, idx);
+}
 */
 
 /*
@@ -42,24 +97,71 @@ https://www.jschallenger.com/javascript-arrays
 // Write a function that takes an array (a) and a value (b) as argument
 // The function should clean a from all occurrences of b
 // Return the filtered array
+
+function removeElements(array, r) {
+   let i = 0;
+   while(i < array.length) {
+      if(array[i] === r) {
+         array.splice(i, 1);
+      } else {
+         i++
+      }
+   }
+   return array;
+}
+
+let array = [1, 1, 5, 5, 7, 8, 5, 4, 4, 10, 12, 9, 8, 8, 7];
+//let r = prompt('Qual número remover: ');
+let r = 5;
+console.log(removeElements(array, r));
 */
 
 /*
 7
 // Write a function that takes an array (a) as argument
 // Return the number of elements in a
+
+function length(array) {
+   let l = array.length;
+   return l;
+}
+
+let array = [1,2,3,4,5,7,7,8,3,2];
+console.log(length(array));
 */
 
 /*
 8
 // Write a function that takes an array of numbers as argument
 // Return the number of negative values in the array
+
+const negative = (array) => {
+   let count = 0;
+   for(let i = 0; i < array.length; i++) {
+      if(array[i] < 0) {
+         count++;
+      }
+   }
+   return count;
+}
+
+let array = [-1, -5, 0, 0, 7, 12, -10, -4, 8, -2];
+console.log(negative(array));
 */
+
 
 /*
 9
 // Write a function that takes an array of numbers as argument
 // It should return an array with the numbers sorted in descending order
+
+function sortedNumber(array) {
+   array.sort((a, b) => a - b);
+   return array;
+}
+
+let array = [5,7,2,4,9,10,12,3,1];
+console.log(sortedNumber(array));
 */
 
 /*
@@ -67,38 +169,144 @@ https://www.jschallenger.com/javascript-arrays
 // Write a function that takes an array of strings as argument
 // Sort the array elements alphabetically
 // Return the result
+
+const sortedStrings = (array) => {
+   return array.sort(function (a, b) {
+      return a.toLowerCase().localeCompare(b.toLowerCase());
+   })
+}
+
+let array = ['hello', 'Hi', 'Bola', 'World', 'osso'];
+console.log(sortedStrings(array));
 */
 
 /*
 11
 // Write a function that takes an array of numbers as argument
 // It should return the average of the numbers
+
+const avg = (array) => {
+   let soma = 0;
+   for(let value of array) {
+      soma += value;
+   }
+   return soma / array.length;
+}
+
+let array = [1,3,6,8,4,5,9,10];
+console.log(avg(array));
 */
+
 
 /*
 12
 // Write a function that takes an array of strings as argument
 // Return the longest string
+
+function bigString(array) {
+   let len = array.map(function(word) {
+      return word.length;
+   });
+
+   let maior = len[0];
+   let maiorIdx = 0;
+
+   for(let i = 0; i < len.length; i++) {
+      if(len[i] > maior) {
+         maior = len[i];
+         maiorIdx = i;
+      }
+   }
+   console.log(array);
+   console.log(len);
+   return array[maiorIdx];
+}
+
+let array = ['bola', 'abelha', 'arma', 'Basketball', 'Armario'];
+console.log(bigString(array));
 */
+
 
 /*
 13
 // Write a function that takes an array as argument
 // It should return true if all elements in the array are equal
 // It should return false otherwise
+
+function isEqual(array) {
+   for(let i = 0; i< array.length - 1; i++) {
+      if(array[i] !== array[i+1]) {
+         return false;
+      }
+   }
+   return true;
+}
+
+const isEqual2 = (array) => {
+   const base = array[0];
+   return array.every(element => element === base);
+}
+
+let array = [1,1,1,1,1];
+let array2 = [1,2,3,4,5];
+console.log(isEqual(array));
+console.log(isEqual(array2));
+
+console.log(isEqual2(array));
+console.log(isEqual2(array2));
 */
+
 
 /*
 14
 // Write a function that takes arguments an arbitrary number of arrays
 // It should return an array containing the values of all arrays
+
+function mergeArray(...arrays) {
+   let mergedArray = [];
+   return mergedArray.concat(...arrays);
+}
+
+let array1 = [1,2,5,8,3];
+let array2 = [-1, 0, -3, 5];
+let array3 = [12, 32];
+console.log(mergeArray(...array1, ...array2, ...array3));
 */
+
 
 /*
 15
 // Write a function that takes an array of objects as argument
 // Sort the array by property b in ascending order
 // Return the sorted array
+
+function sortPropertyB(array) {
+   array.sort((a, b) => (a.v2 > b.v2) ? 1 : ((b.v2 > a.v2) ? -1 : 0));
+   return array;
+}
+
+function sortPropertyB2(array) {
+   array.sort((a,b) => a.v2 - b.v2);
+   return array;
+}
+
+function sortPropertyB3(array) {
+   array.sort(compare);
+   return array;
+}
+
+function compare(a, b) {
+   if(a.v2 > b.v2) {
+      return 1;
+   } else if (b.v2 > a.v2) {
+      return -1;
+   } else {
+      return 0;
+   }
+}
+
+let array = [{v1: 1, v2: 3}, {v1: 5, v2: 7}, {v1:6, v2: 1}];
+console.log(sortPropertyB(array));
 */
 
 /*
@@ -107,6 +315,28 @@ https://www.jschallenger.com/javascript-arrays
 // Merge both arrays and remove duplicate values
 // Sort the merge result in ascending order
 // Return the resulting array
+
+function mergeRemoveDuplicates(array, array2) {
+   let arr = [...new Set(array)];
+   let arr2 = [...new Set(array2)];
+   arr.concat(arr2);
+   return sortedNumber(arr);
+}
+
+function sortedNumber(array) {
+   array.sort((a, b) => a - b);
+   return array;
+}
+
+const mergeRemoveDuplicates2 = (array, array2) => {
+   array.concat(array2);
+   let mergedArray = [...new Set(array)];
+   return sortedNumber(mergedArray);
+}
+
+let array = [1, 7, 3, 3, 5, 5, 10, 9, 6];
+let array2 = [6, 12, 15, 1, 3];
+console.log(mergeRemoveDuplicates(array, array2));
 */
 
 /*
@@ -114,12 +344,37 @@ https://www.jschallenger.com/javascript-arrays
 // Write a function that takes an array (a) and a number (b) as arguments
 // Sum up all array elements with a value greater than b
 // Return the sum
+
+function sumGreaterThan(array, v) {
+   let soma = 0;
+   for(let value of array) {
+      if(value > v) {
+         soma += value;
+      }
+   }
+   return soma;
+}
+
+let array = [2,5,6,3,9,10,7,4,15,18,20];
+let v = 9;
+console.log(sumGreaterThan(array, v));
 */
 
 /*
 18
 // Write a function that takes two numbers (min and max) as arguments
 // Return an array of numbers in the range min to max
+
+
+const minMaxRange = (min, max) => {
+   for(let i = min; i <= max; i++) {
+      console.log(i);
+   }
+}
+
+let min = 4;
+let max = 9;
+minMaxRange(4, 9);
 */
 
 /*
@@ -130,6 +385,26 @@ https://www.jschallenger.com/javascript-arrays
 // The values should be arrays of strings containing only the corresponding strings
 // For example, the array ['Alf', 'Alice', 'Ben'] should be transformed to
 // { a: ['Alf', 'Alice'], b: ['Ben']}
+
+const groupIt = (array) => {
+   let resultObj = {};
+
+   for(let i = 0; i < array.length; i++) {
+      let currentWord = array[i];
+      let firstChar = currentWord[0].toLowerCase();
+      let innerArr = [];
+      if(resultObj[firstChar] === undefined) {
+         innerArr.push(currentWord);
+         resultObj[firstChar] = innerArr;
+      } else {
+         resultObj[firstChar].push(currentWord);
+      }
+   }
+   return resultObj;
+}
+
+let array = ['Alf', 'Alice', 'Ben'];
+console.log(groupIt(array));
 */
 
 /*
@@ -139,6 +414,19 @@ https://www.jschallenger.com/javascript-arrays
 // or zero if the number is smaller than 6
 // The other elements should be the elements of the original array
 // Try not to mutate the original array
+
+function addElement(array, value) {
+   if(value > 6) {
+      array.unshift(value);
+   } else {
+      array.unshift(0);
+   }
+   return array;
+}
+
+let array = [2,5,4];
+let value = 7;
+console.log(addElement(array, value));
 */
 
 /*
@@ -146,6 +434,18 @@ https://www.jschallenger.com/javascript-arrays
 // Write a function that takes an array (a) and a value (n) as arguments
 // Save every nth element in a new array
 // Return the new array
+
+function printEveryNthValue(array, value) {
+   let cont = value - 1;
+   while(cont < array.length) {
+      console.log(array[cont]);
+      cont += value;
+   }
+}
+
+let array = [1,3,4,-7,-2,8,10,0,-1,5];
+let value = 3;
+printEveryNthValue(array,value);
 */
 
 /* ------------------------------------------------------------------------------------------- */
@@ -273,28 +573,3 @@ Given an array and two indexes, move the relevant element within the array to it
 13. Build a new array by indexes
 From the first array, construct a new array based on the indexes supplied.
 */
-
-/* ------------------------------------------------------------------------------------------- */
-
-/*
-Exercise-2 with Solution
-Write a JavaScript function to clone an array.
-*/
-
-/*
-Exercise-5 with Solution
-Write a simple JavaScript program to join all elements of the following array into
-a string.
-Expected Output :
-"Red,Green,White,Black"
-"Red,Green,White,Black"
-"Red+Green+White+Black
-*/
-
-/*
-Exercise-7 with Solution
-Write a JavaScript program to sort the items of an array.
-Sample array : var arr1 = [ 3, 8, 7, 6, 5, -4, 3, 2, 1 ];
-Sample Output : -4,-3,1,2,3,5,6,7,8
-*/
-
