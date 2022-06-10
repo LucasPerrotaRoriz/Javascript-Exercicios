@@ -628,11 +628,10 @@ console.log(orderBySum(array));
 Find the odd one out in the provided array. All array elements are equal, except one.
 Your function must return this odd one out.
 
-const findOddOneOut = (someArray) => {
-   // your code
-}
+const allEqual = arr => arr.every( v => v === arr[0] )
+console.log(allEqual(['a','a','b','a']));
 
-console.log(findOddOneOut(["a", "a", "b", "a"]))
+console.log([1,1,1,1].every((val, i, arr) => val === arr[0]));
 */
 
 /*
@@ -640,8 +639,19 @@ console.log(findOddOneOut(["a", "a", "b", "a"]))
 Deduce the smallest and the largest number from the supplied numeric array.
 Return an array containing these numbers, smallest number first.
 
-const findSmallestAndLargestNumbers = (someArray) => {
-   // your code
+const findSmallestAndLargestNumbers = (array) => {
+   let maior = array[0];
+   let menor = array[0];
+
+   for(let value of array) {
+      if(value > maior) {
+         maior = value
+      }
+      if(value < menor) {
+         menor = value
+      }
+   }
+   console.log(maior, menor)
 }
 
 console.log(findSmallestAndLargestNumbers([14, 28, 3, 8, 2]))
@@ -656,11 +666,35 @@ one containing odd numbers, the other containing even numbers.
 The returned arrays should be ordered appropriately, with distinct values only (no duplicates).
 The even array should be returned first.
 
-const splitByOddAndEven = (someArray) => {
-   // your code
+const splitByOddAndEven = (array) => {
+   let odd = [];
+   let even = [];
+
+   for(let i = 0; i < array.length; i++) {
+      if(array[i] % 2 === 0) {
+         even.push(array[i]);
+      } else {
+         odd.push(array[i]);
+      }
+   }
+
+   console.log(Array.from(new Set(odd)).sort(function (a, b) {
+      return a - b;
+   }));
+   console.log(Array.from(new Set(even)).sort(function(a, b) {
+      return a - b;
+   }));
+
+   odd.sort(function(a, b) {
+      return a - b;
+   })
+
+   even.sort(function(a, b) {
+      return a - b;
+   })
 }
 
-console.log(splitByOddAndEven([2, 3, 7, 6, 2, 4, 9)
+console.log(splitByOddAndEven([2, 3, 7, 6, 2, 4, 9]));
 */
 
 /*
@@ -668,11 +702,11 @@ console.log(splitByOddAndEven([2, 3, 7, 6, 2, 4, 9)
 In this JavaScript array exercise, the supplied array may contain duplicate values. Write a function to return only unique values —
 values that only occur exactly one time within the provided array.
 
-const onlyUnique = (someArray) => {
-   // your code
+const onlyUnique = (array) => {
+   console.log(Array.from(new Set(array)));
 }
 
-console.log(onlyUnique([1, 1, 2, 3, 3, 4, 4, 5])
+console.log(onlyUnique([1, 1, 2, 3, 3, 4, 4, 5]));
 */
 
 /*
@@ -755,10 +789,5 @@ console.log(move([4, 5, 7], 2, 1))
 13. Build a new array by indexes
 From the first array, construct a new array based on the indexes supplied.
 
-const buildArray = (someArray, indexes) => {
-    // your code
-}
-
-console.log(buildArray(["mon", "tue", "wed", "thur", "fri"), [1, 3, 4])
-
+buildArray(["mon", "tue", "wed", "thur", "fri"], [1, 3, 4]);
 */
