@@ -149,7 +149,6 @@ let array = [-1, -5, 0, 0, 7, 12, -10, -4, 8, -2];
 console.log(negative(array));
 */
 
-
 /*
 9
 // Write a function that takes an array of numbers as argument
@@ -197,7 +196,6 @@ let array = [1,3,6,8,4,5,9,10];
 console.log(avg(array));
 */
 
-
 /*
 12
 // Write a function that takes an array of strings as argument
@@ -225,7 +223,6 @@ function bigString(array) {
 let array = ['bola', 'abelha', 'arma', 'Basketball', 'Armario'];
 console.log(bigString(array));
 */
-
 
 /*
 13
@@ -256,7 +253,6 @@ console.log(isEqual2(array));
 console.log(isEqual2(array2));
 */
 
-
 /*
 14
 // Write a function that takes arguments an arbitrary number of arrays
@@ -272,7 +268,6 @@ let array2 = [-1, 0, -3, 5];
 let array3 = [12, 32];
 console.log(mergeArray(...array1, ...array2, ...array3));
 */
-
 
 /*
 15
@@ -536,6 +531,44 @@ https://justacoding.blog/javascript-exercises-for-beginners-part-2-arrays/
 1. Shuffle the array
 Imagine the supplied array is like a pack of cards. Write a function to shuffle this array in to a
 completely new and entirely random order, much like shuffling a pack of cards.
+
+let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+let suits = ["hearts", "diamonds", "spades", "clubs"];
+let deck = [];
+let deck2 = [];
+
+for (let i = 0; i < suits.length; i++) {
+  for (let j = 0; j < values.length; j++) {
+    deck.push(`${values[j]} of ${suits[i]}`);
+  }
+}
+
+for (let i = deck.length - 1; i > 0; i--) {
+  let j = Math.floor(Math.random() * i);
+  let temp = deck[i];
+  deck[i] = deck[j];
+  deck[j] = temp;
+}
+
+for (let value of deck) {
+  console.log(value);
+}
+
+for (let i = 0; i < suits.length; i++) {
+   for (let x = 0; x < values.length; x++) {
+       let card = { Value: values[x], Suit: suits[i] };
+       deck2.push(card);
+   }
+}
+
+for (let i = deck2.length - 1; i > 0; i--) {
+   let j = Math.floor(Math.random() * i);
+   let temp = deck2[i];
+   deck2[i] = deck2[j];
+   deck2[j] = temp;
+}
+
+console.log(deck2);
 */
 
 /*
@@ -552,22 +585,66 @@ lengths.
  */
 
 /*
+let array = [1,2,3,4,5];
+let array2 = [6,7,8,9,10];
+let array3 = [];
+
+for(let i = 0; i < array.length; i++) {
+   array3.push(array[i], array2[i]);
+}
+console.log(array3);
+
+let array1 = [1,2,3];
+let array2 = [4,5,6,7,8,9,10];
+let array3 = [];
+m = Math.min(array1.length, array2.length);
+
+for(let i = 0; i < m; i++) {
+   array3.push(array1[i], array2[i]);
+}
+
+array3.push(...array1.slice(m), ...array2.slice(m));
+console.log(array3);
+*/
+
+/*
 3. Order the arrays by sum, ascending or descending
 Given an array of arrays (ie. a multidimensional array), each containing only numeric values,
 order these arrays by the sum of the elements within.
-*/
 
+const orderBySum = (array) => {
+   array.sort(function(a, b) {
+      return (a[0] + a[1]) - (b[0] + b[1]);
+   });
+   return array;
+}
+
+let array = [[1,3], [4,2], [2, 1]];
+console.log(orderBySum(array));
+*/
 
 /*
 4. Find the odd one out
 Find the odd one out in the provided array. All array elements are equal, except one.
 Your function must return this odd one out.
+
+const findOddOneOut = (someArray) => {
+   // your code
+}
+
+console.log(findOddOneOut(["a", "a", "b", "a"]))
 */
 
 /*
 5. Find the smallest and largest numbers
 Deduce the smallest and the largest number from the supplied numeric array.
 Return an array containing these numbers, smallest number first.
+
+const findSmallestAndLargestNumbers = (someArray) => {
+   // your code
+}
+
+console.log(findSmallestAndLargestNumbers([14, 28, 3, 8, 2]))
 */
 
 /*
@@ -578,12 +655,24 @@ one containing odd numbers, the other containing even numbers.
 
 The returned arrays should be ordered appropriately, with distinct values only (no duplicates).
 The even array should be returned first.
+
+const splitByOddAndEven = (someArray) => {
+   // your code
+}
+
+console.log(splitByOddAndEven([2, 3, 7, 6, 2, 4, 9)
 */
 
 /*
 7. Return only unique values
 In this JavaScript array exercise, the supplied array may contain duplicate values. Write a function to return only unique values —
 values that only occur exactly one time within the provided array.
+
+const onlyUnique = (someArray) => {
+   // your code
+}
+
+console.log(onlyUnique([1, 1, 2, 3, 3, 4, 4, 5])
 */
 
 /*
@@ -594,6 +683,17 @@ random order, also.
 
 The array is composed in such a way that it can be sorted in to an alphabetic order. Your function
 should reorder all of these pieces to accomplish this.
+
+const alphabetize = (someArray) => {
+   // your code
+}
+
+const jumbledAlphabetically = [
+   ["e", "d", "f"],
+   ["a", "c", "b"],
+   ["m", "o", "n"]
+]
+console.log(alphabetize(jumbledAlphabet))
 */
 
 /*
@@ -602,28 +702,63 @@ Your function must accept 2 arrays, then return the common words from each. So, 
 containing the words which occur at least once in each of the supplied arrays must be returned back.
 
 Words that are most common throughout both of the arrays should be returned first.
+
+const findCommonWords = (firstArray, secondArray) => {
+   // your code
+}
+
+const firstArray = ["dog", "cat", "parrot"]
+const secondArray = ["lizard", "rat", "cat"]
+console.log(findCommonWords(firstArray, secondArray))
 */
 
 /*
 10. Does the array contain all of the elements?
 Write a function to accept two arrays. Does the first array contain all elements represented in the
 second array?
+
+const containsAllElements = (firstArray, secondArray) => {
+   // your code
+}
+
+console.log(containsAllElements(["monday", "tuesday"], ["tuesday"]))
 */
 
 /*
 11. Shift all numeric values to the beginning
-   ~~~~~~ ~ ~ =´´~~~~~~~~~~~~~~~~~~~~~=´~The supplied array will contain both numeric and non-numeric characters.
+The supplied array will contain both numeric and non-numeric characters.
 
-Return a new array where all numeric values are positioned at the beginning of the array, in ascending order.
-The non-numeric values must come after these, also ordered appropriately.
+Return a new array where all numeric values are positioned at the beginning of the array,
+in ascending order. The non-numeric values must come after these, also ordered appropriately.
+
+const sortTheArray = (someArray) => {
+    // your code
+}
+
+console.log(sortTheArray(["b", 6, "a", "q", 7, 2]))
+
 */
 
 /*
 12. Move the element
 Given an array and two indexes, move the relevant element within the array to its new position.
+
+const move = (someArray, firstIndex, secondIndex) => {
+    // your code
+}
+
+console.log(move([4, 5, 7], 2, 1))
+
 */
 
 /*
 13. Build a new array by indexes
 From the first array, construct a new array based on the indexes supplied.
+
+const buildArray = (someArray, indexes) => {
+    // your code
+}
+
+console.log(buildArray(["mon", "tue", "wed", "thur", "fri"), [1, 3, 4])
+
 */
